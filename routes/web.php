@@ -19,16 +19,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('homepage');
-});
+})->name('home');
 
-Route::get('login', function () {
-    return view('loginpage');
-})->name('login');
-
-Route::get('checkout', function() {
+Route::get('checkout', function () {
     return view('checkout');
 })->name('checkout');
 
-Route::get('checkout_success', function() {
+Route::get('checkout_success', function () {
     return view('checkout_success');
 })->name('checkout_success');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

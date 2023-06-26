@@ -31,12 +31,27 @@
             <p class="subheader">
                 Because tomorrow become never
             </p>
-            <p>
-                <a class="btn btn-border btn-google-login" href="{{ route('signin.google') }}">
-                    <img src="{{ asset('assets/images/ic_google.svg') }}" class="icon" alt=""> Sign In with Google
-                </a>
-            </p>
-            <img src="{{ asset('assets/images/people.png') }}" class="people" alt="">
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <label for="email">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <label for="password">Password</label>
+                </div>
+
+                <div class="mt-3">
+                    <button class="btn btn-primary w-100" type="submit">Sign in</button>
+                </div>
+                <div class="pb-3">
+                    <a class="btn btn-border w-100 btn-google-login" href="{{ route('signin.google') }}">
+                        <img src="{{ asset('assets/images/ic_google.svg') }}" class="icon" alt=""> Sign In with Google
+                    </a>
+                </div>
+            </form>
+            {{-- <img src="{{ asset('assets/images/people.png') }}" class="people" alt=""> --}}
         </div>
     </section>
 

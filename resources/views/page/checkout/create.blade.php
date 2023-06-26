@@ -37,11 +37,11 @@
                             </div>
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input name="email" type="email" class="form-control" id="email">
+                                <input name="email" type="email" class="form-control" id="email" value="{{ Auth::user()->email }}">
                             </div>
                             <div class="mb-4">
                                 <label for="occupation" class="form-label">Occupation</label>
-                                <input name="occupation" type="text" class="form-control" id="occupation">
+                                <input name="occupation" type="text" class="form-control" id="occupation" value="{{ Auth::user()->occupation }}">
                             </div>
                             <div class="mb-4">
                                 <label for="card_number" class="form-label">Card Number</label>
@@ -51,7 +51,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <label for="expired" class="form-label">Expired</label>
-                                        <input name="expired" type="date" class="form-control" id="expired">
+                                        <input name="expired" type="date" class="form-control" id="expired" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <label for="cvc" class="form-label">CVC</label>

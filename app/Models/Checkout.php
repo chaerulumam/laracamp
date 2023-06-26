@@ -16,4 +16,14 @@ class Checkout extends Model
     {
         $this->attributes['expired'] = date('Y-m-t', strtotime($value));
     }
+
+    /**
+     * Get the camp that owns the Checkout
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function camp()
+    {
+        return $this->belongsTo(Camp::class);
+    }
 }

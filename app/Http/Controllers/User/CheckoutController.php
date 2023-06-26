@@ -26,11 +26,10 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Camp $camp)
-    {    
+    {
         return view('page.checkout.create', [
             'camp' => $camp
         ]);
-
     }
 
     /**

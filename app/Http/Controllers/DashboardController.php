@@ -10,8 +10,14 @@ class DashboardController extends Controller
 {
     public function dashboard() 
     {
-        $checkout = Checkout::with('camp')->whereUserId(Auth::id())->get();
-        // dd($checkout);
-        return view('page.user.dashboard', ['checkout' => $checkout]);
+        switch (Auth::user()->is_admin) {
+            case true:
+                return redirect(route('admin.dashboard'));
+                break;
+            
+            default:
+                return redirect(route('user.dashboard'));
+                break;
+        }
     }
 }

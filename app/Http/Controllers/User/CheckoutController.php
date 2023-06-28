@@ -181,7 +181,7 @@ class CheckoutController extends Controller
 
         try {
             // get payment url
-            $paymentUrl = \Midtrans\Snap::createTransaction($params)->redirect_url;
+            $paymentUrl = \Midtrans\Snap::createTransaction($midtrans_params)->redirect_url;
             $checkout->midtrans_url = $paymentUrl;
             $checkout->save();
 
@@ -199,16 +199,16 @@ class CheckoutController extends Controller
         $fraud = $notif->fraud_status;
 
         $checkout_id = explode('-', $notif->order_id)[0];
-        $chckout = Checkout::find($checkout_id);
+        $checkout = Checkout::find($checkout_id);
 
         if ($transaction_status == 'capture') {
             if ($fraud == 'challenge') {
             // TODO Set payment status in merchant's database to 'challenge'
-            $chckout->payment_status = 'pending';
+            $checkout->payment_status = 'pending';
             }
             else if ($fraud == 'accept') {
             // TODO Set payment status in merchant's database to 'success'
-            $chckout->payment_status = 'paid'
+            $checkout->payment_status = 'paid';
             }
         }
         else if ($transaction_status == 'cancel') {
@@ -223,22 +223,22 @@ class CheckoutController extends Controller
         }
         else if ($transaction_status == 'deny') {
             // TODO Set payment status in merchant's database to 'failure'
-            $chckout->payment_status = 'failed';
+            $checkout->payment_status = 'failed';
         }
         else if ($transaction_status == 'settlement') {
             // TODO set payment status in merchant's database to 'Settlement'
-            $chckout->payment_status = 'paid';
+            $checkout->payment_status = 'paid';
         }
         else if ($transaction_status == 'pending') {
             // TODO set payment status in merchant's database to 'Pending'
-            $chckout->payment_status = 'pending';
+            $checkout->payment_status = 'pending';
         }
         else if ($transaction_status == 'expire') {
             // TODO set payment status in merchant's database to 'expire'
-            $chckout->payment_status = 'failed';
+            $checkout->payment_status = 'failed';
         }
 
-        $chckout->save();
+        $checkout->save();
         return view('checkout/success');
     }
 }

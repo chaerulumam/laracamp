@@ -31,9 +31,9 @@ class UserCheckout extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,'.Auth::id().',id',
             'occupation' => 'required|string',
-            'card_number' => 'required|numeric|digits_between:8,16',
-            'expired' => 'required|date|date_format:Y-m-d|after_or_equal:'.$expiredValidation,
-            'cvc' => 'required|numeric|digits:3'
+            'address' => 'required|string',
+            'phone' => 'required|string',
+            
         ];
     }
 }

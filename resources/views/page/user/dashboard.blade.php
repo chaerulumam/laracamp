@@ -35,10 +35,8 @@
                                 <strong>${{ $data->camp->price }}</strong>
                             </td>
                             <td>
-                                @if ($data->is_paid)
-                                    <strong class="text-success">Success</strong>
-                                @else
-                                    <strong class="text-warning">Waiting for Payment</strong>
+                                @if ($data->payment_status == 'waiting')
+                                    <a href="{{ $data->midtrans_url }}" class="btn btn-primary btn-sm">Pay Here</a>
                                 @endif
                             </td>
                             <td>

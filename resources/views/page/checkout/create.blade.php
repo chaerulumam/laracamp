@@ -38,6 +38,7 @@
                                     <p class="text-danger">{{ $errors->first('name') }}</p>
                                 @endif
                             </div>
+
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email Address</label>
                                 <input name="email" type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email" value="{{ Auth::user()->email }}">
@@ -45,6 +46,7 @@
                                     <p class="text-danger">{{ $errors->first('email') }}</p>
                                 @endif
                             </div>
+
                             <div class="mb-4">
                                 <label for="occupation" class="form-label">Occupation</label>
                                 <input name="occupation" type="text" class="form-control {{ $errors->has('occupation') ? 'is-invalid' : '' }}" id="occupation" value="{{ old('occupation') ? : Auth::user()->occupation }}">
@@ -52,31 +54,23 @@
                                     <p class="text-danger">{{ $errors->first('occupation') }}</p>
                                 @endif
                             </div>
+                            
                             <div class="mb-4">
-                                <label for="card_number" class="form-label">Card Number</label>
-                                <input name="card_number" type="number" class="form-control {{ $errors->has('card_number') ? 'is-invalid' : '' }}" id="card_number" value="{{ old('card_number') }}">
-                                @if ($errors->has('card_number'))
-                                    <p class="text-danger">{{ $errors->first('card_number') }}</p>
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input name="phone" type="text" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" id="phone" value="{{ old('phone') }}">
+                                @if ($errors->has('phone'))
+                                    <p class="text-danger">{{ $errors->first('phone') }}</p>
                                 @endif
                             </div>
-                            <div class="mb-5">
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <label for="expired" class="form-label">Expired</label>
-                                        <input name="expired" type="date" class="form-control {{ $errors->has('expired') ? 'is-invalid' : '' }}" id="expired" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
-                                        @if ($errors->has('expired'))
-                                            <p class="text-danger">{{ $errors->first('expired') }}</p>
-                                        @endif
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <label for="cvc" class="form-label">CVC</label>
-                                        <input name="cvc" type="number" maxlength="3" class="form-control {{ $errors->has('cvc') ? 'is-invalid' : '' }}" id="cvc" value="{{ old('cvc') }}">
-                                        @if ($errors->has('cvc'))
-                                            <p class="text-danger">{{ $errors->first('cvc') }}</p>
-                                        @endif
-                                    </div>
-                                </div>
+
+                            <div class="mb-4">
+                                <label for="address" class="form-label">Address Number</label>
+                                <input name="address" type="text" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" id="address" value="{{ old('address') }}">
+                                @if ($errors->has('address'))
+                                    <p class="text-danger">{{ $errors->first('address') }}</p>
+                                @endif
                             </div>
+                            
                             <button type="submit" class="w-100 btn btn-primary">
                                 Pay Now
                             </button>
